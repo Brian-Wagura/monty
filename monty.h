@@ -36,23 +36,31 @@ typedef struct instruction_s
 } instruction_t;
 
 /**
- * global - contains all globals
- * @data: int to push
+ * struct global - contains all globals
+ * @arg: value
  * @fm: file stream for monty file
- * @lineptr: pointer to char allocated by getline function
+ * @linecontent: line content
+ * @lifi: flag change (stack/queue).
  */
-struct global
+typedef struct global
 {
-    int data;
+    char *arg;
     FILE *fm;
-    char *lineptr;
-} globs;
+    char *linecontent;
+    int lifi;
 
-void fpush(stack_t **top, unsigned int line_number __attribute__((unused)));
-void fpall(stack_t **top, unsigned int line_number __attribute__((unused)));
+} globs_t;
+
+extern globs_t globs;
+
+void fpush(stack_t **top, unsigned int line_number);
+void fpall(stack_t **top, unsigned int line_number);
 void fpint(stack_t **stack, unsigned int line_number);
+void fpop(stack_t **stack, unsigned int line_number);
+
+void addnode(stack_t **head, int n);
+void addqueue(stack_t **head, int n);
 
 void free_stack(stack_t *stack);
-void free_exit(stack_t *stack);
 
 #endif /* MONTY_H */

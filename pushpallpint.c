@@ -3,33 +3,38 @@
 /**
  * fpush - Add node to stack
  * @top: Element at the top of the stack
- * @line_number: constant int value in the structure
+ * @line_number: line number
  *
  * Return: void
  */
 void fpush(stack_t **top, unsigned int line_number)
 {
-	stack_t *new_node;
+	int n;
+	char *endptr;
 
-	new_node = malloc(sizeof(stack_t));
-	if (new_node == NULL)
+	if (globs.arg)
 	{
-		fprintf(stderr, "Error: malloc failed");
-		free_exit(*top);
-		exit(EXIT_FAILURE);
+		n = strtol(globs.arg, &endptr, 10);
+		if (*endptr != '\0')
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+		else
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+
+		if (globs.lifi == 0)
+		{
+			addnode(top, n);
+		}
+		else
+		{
+			addqueue(top, n);
+		}
 	}
-	new_node->n = globs.data;
-	new_node->prev = NULL;
-	if (*top == NULL)
-	{
-		new_node->next = NULL;
-	}
-	else
-	{
-		new_node->next = *top;
-		(*top)->prev = new_node;
-	}
-	*top = new_node;
 }
 
 /**
@@ -59,13 +64,13 @@ void fpall(stack_t **top, unsigned int line_number)
 
 void fpint(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp = *stack;
-
-	if (!temp)
+	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
-		free_exit(*stack);
+		fclose(globs.fm);
+		free(globs.linecontent);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", temp->n);
+	printf("%d\n", (*stack)->n);
 }
