@@ -48,8 +48,8 @@ struct global
     char *lineptr;
 } globs;
 
-void fpush(stack_t **top, unsigned int line_number);
-void fpall(stack_t **top, unsigned int line_number);
+void fpush(stack_t **top, unsigned int line_number __attribute__((unused)));
+void fpall(stack_t **top, unsigned int line_number __attribute__((unused)));
 void fpint(stack_t **stack, unsigned int line_number);
 
 void free_stack(stack_t *stack);

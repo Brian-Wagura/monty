@@ -39,7 +39,7 @@ void fpush(stack_t **top, unsigned int line_number)
  *
  * Return: void
  */
-void fpall(stack_t **top, unsigned int line_number __attribute__((unused)))
+void fpall(stack_t **top, unsigned int line_number)
 {
 	stack_t *current = *top;
 
