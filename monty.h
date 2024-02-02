@@ -59,6 +59,7 @@ void fpush(stack_t **top, unsigned int line_number);
 void fpall(stack_t **top, unsigned int line_number);
 void fpint(stack_t **stack, unsigned int line_number);
 void fpop(stack_t **stack, unsigned int line_number);
+void fswap(stack_t **head, unsigned int line_number);
 
 int execute(char *content, stack_t **stack, unsigned int counter, FILE *file);
 
