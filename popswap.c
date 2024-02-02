@@ -29,15 +29,26 @@ void fpop(stack_t **stack, unsigned int line_number)
  */
 void fswap(stack_t **head, unsigned int line_number)
 {
-	int temp;
+	stack_t *top;
+	int len = 0, aux;
 
-	if (*head == NULL || (*head)->next == NULL)
+	top = *head;
+	while (top)
 	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n");
+		top = top->next;
+		len++;
+	}
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		fclose(globs.fm);
+		free(globs.linecontent);
+		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
 
-	temp = (*head)->n;
-	(*head)->n = (*head)->next->n;
-	(*head)->next->n = temp;
+	top = *head;
+	aux = top->n;
+	top->n = top->next->n;
+	top->next->n = aux;
 }
