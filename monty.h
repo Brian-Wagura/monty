@@ -35,9 +35,24 @@ typedef struct instruction_s
     void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * global - contains all globals
+ * @data: int to push
+ * @fm: file stream for monty file
+ * @lineptr: pointer to char allocated by getline function
+ */
+struct global
+{
+    int data;
+    FILE *fm;
+    char *lineptr;
+} globs;
+
 void fpush(stack_t **top, unsigned int line_number);
 void fpall(stack_t **top, unsigned int line_number);
+void fpint(stack_t **stack, unsigned int line_number);
 
-void malloc_error(void);
+void free_stack(stack_t *stack);
+void free_exit(stack_t *stack);
 
 #endif /* MONTY_H */
