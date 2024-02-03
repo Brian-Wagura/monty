@@ -8,12 +8,13 @@
 */
 void frotl(stack_t **head, __attribute__((unused)) unsigned int line_number)
 {
+	stack_t *last;
+
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		return;
 	}
-	stack_t *last = *head;
-
+    last = *head;
 	while (last->next != NULL)
 	{
 		last = last->next;

@@ -7,7 +7,7 @@
  * @line_number: line number
  * Return: no return
 */
-void fmod(stack_t **head, unsigned int line_number)
+void mod_op(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp;
 

@@ -21,11 +21,12 @@ int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 		{"sub", fsub},
 		{"div", fdiv},
 		{"mul", fmul},
-		{"mod", fmod},
+		{"mod", mod_op},
 		{"nop", fnop},
 		{"pchar", fpchar},
 		{"pstr", fpstr},
 		{"rotl", frotl},
+		{"rotr", frotr},
 		{NULL, NULL}};
 
 	char *op;
