@@ -62,11 +62,16 @@ void fpop(stack_t **stack, unsigned int line_number);
 void fswap(stack_t **head, unsigned int line_number);
 void fadd(stack_t **stack, unsigned int line_number);
 void fsub(stack_t **head, unsigned int line_number);
-
-int execute(char *content, stack_t **stack, unsigned int counter, FILE *file);
-
+void fdiv(stack_t **head, unsigned int line_number);
+void fmul(stack_t **head, unsigned int line_number);
+void fmod(stack_t **head, unsigned int line_number);
+void fnop(stack_t **head, unsigned int line_number);
+void fpchar(stack_t **head, unsigned int line_number);
+void fpstr(stack_t **head, unsigned int line_number);
 void addnode(stack_t **head, int n);
 void addqueue(stack_t **head, int n);
+void frotl(stack_t **head, __attribute__((unused)) unsigned int line_number);
+int execute(char *content, stack_t **stack, unsigned int counter, FILE *file);
 
 void free_stack(stack_t *stack);
 
